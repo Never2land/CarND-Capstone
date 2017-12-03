@@ -34,6 +34,8 @@
 namespace waypoint_follower
 {
 
+
+
 void PurePursuit::callbackFromCurrentPose(const geometry_msgs::PoseStampedConstPtr &msg)
 {
   current_pose_.header = msg->header;
@@ -63,6 +65,7 @@ double PurePursuit::getCmdVelocity(int waypoint) const
   }
 
   double velocity = current_waypoints_.getWaypointVelocityMPS(waypoint);
+  // ROS_INFO("waypoint : %d", velocity);
   // ROS_INFO_STREAM("waypoint : " << mps2kmph(velocity) << " km/h ( " << velocity << "m/s )");
   return velocity;
 }
@@ -77,6 +80,7 @@ void PurePursuit::calcLookaheadDistance(int waypoint)
                       : ld > maximum_lookahead_distance ? maximum_lookahead_distance
                       : ld ;
 
+  ROS_INFO("current velocity: %f",current_velocity_mps);
   ROS_INFO("lookahead distance: %f",lookahead_distance_);
 
   return ;

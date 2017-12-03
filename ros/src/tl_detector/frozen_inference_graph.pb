@@ -1,0 +1,1 @@
+../../../traffic_light_detection/data/frozen_models/faster_rcnn_real/frozen_inference_graph.pb
